@@ -4,45 +4,56 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using TestAPI.Models;
 using TestAPI.Services;
+using TestAPI.Views;
 
 namespace TestAPI.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        private MarketApiHandler handler;
-        private DataModel coinsData;
-        public DataModel CoinsData
+        private Page _currentPage;
+        public Page CurrentPage
         {
             get
             {
-                return coinsData;
+                return _currentPage;
             }
             set
             {
-                if (coinsData == value)
+                if (_currentPage == value)
                     return;
 
-                coinsData = value;
-                OnPropertyChanged("CoinsData");
+                _currentPage = value;
+                OnPropertyChanged("CurrentPage");
             }
         }
         public MainWindowViewModel()
         {
-            handler = new MarketApiHandler();
-            coinsData = new DataModel();
+            CurrentPage = new TopCoinsView();
         }
 
-        private Command getCoins;
-        public Command GetCoins
+        private Command showTopCoins;
+        public Command ShowTopCoins
         {
             get
             {
-                return getCoins ??
-                  (getCoins = new Command(async obj =>
+                return showTopCoins ??
+                  (showTopCoins = new Command(obj =>
                   {
-                      CoinsData = await handler.GetCoins(20);
+                      CurrentPage = new TopCoinsView();
+                  }));
+            }
+        }
+
+        private Command showSearch;
+        public Command ShowSearch
+        {
+            get
+            {
+                return showSearch ??
+                  (showSearch = new Command(obj =>
+                  {
+                      CurrentPage = new SearchView();
                   }));
             }
         }
