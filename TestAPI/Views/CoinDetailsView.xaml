@@ -8,7 +8,65 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CoinDetailsView">
 
-    <Grid>
-        
+    <Grid Background="White">
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock>Rank</TextBlock>
+                    <TextBlock  Text="{Binding Coin.Rank}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock>Name</TextBlock>
+                    <TextBlock  Text="{Binding Coin.Name}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock>Change(24Hr)</TextBlock>
+                    <TextBlock  Text="{Binding Coin.ChangePercent24Hr, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock>Price</TextBlock>
+                    <TextBlock  Text="{Binding Coin.PriceUsd, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock>Market Cap</TextBlock>
+                    <TextBlock  Text="{Binding Coin.MarketCapUsd, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock>Volume(24Hr)</TextBlock>
+                    <TextBlock  Text="{Binding Coin.VolumeUsd24Hr, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock>VWAP(24Hr)</TextBlock>
+                    <TextBlock  Text="{Binding Coin.Vwap24Hr, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock>Supply</TextBlock>
+                    <TextBlock  Text="{Binding Coin.Supply, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock>Max Supply</TextBlock>
+                    <TextBlock  Text="{Binding Coin.MaxSupply, StringFormat={}{0:#.##}}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Page>

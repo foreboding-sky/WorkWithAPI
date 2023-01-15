@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using TestAPI.Models;
 using TestAPI.Services;
 using System.Windows.Interactivity;
+using System.Windows;
 
 namespace TestAPI.ViewModels
 {
@@ -29,11 +30,6 @@ namespace TestAPI.ViewModels
                 OnPropertyChanged("CoinsData");
             }
         }
-        public TopCoinsViewModel()
-        {
-            handler = new MarketApiHandler();
-            coinsData = new DataModel();
-        }
 
         public async void PageLoaded()
         {
@@ -52,6 +48,31 @@ namespace TestAPI.ViewModels
                   }));
             }
         }
+
+        private Command showDetails;
+        public Command ShowDetails
+        {
+            get
+            {
+                return showDetails ??
+                  (showDetails = new Command( obj =>
+                  {
+                      CoinModel coin = obj as CoinModel;
+                      if(coin != null)
+                      {
+                          var window = Window.GetWindow(App.Current.MainWindow) as MainWindow;
+                          MainWindowViewModel vm = window.DataContext as MainWindowViewModel;
+                          vm.Navigate("Details", coin);
+                      }
+                  }));
+            }
+        }
+        public TopCoinsViewModel()
+        {
+            handler = new MarketApiHandler();
+            coinsData = new DataModel();
+        }
+
         private async void GetCoinsFromApi()
         {
             CoinsData = await handler.GetCoins(20);

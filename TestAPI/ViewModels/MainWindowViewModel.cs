@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using TestAPI.Models;
 using TestAPI.Services;
 using TestAPI.Views;
 
@@ -40,7 +41,7 @@ namespace TestAPI.ViewModels
                 return showTopCoins ??
                   (showTopCoins = new Command(obj =>
                   {
-                      CurrentPage = new TopCoinsView();
+                      Navigate("TopCoins");
                   }));
             }
         }
@@ -53,8 +54,28 @@ namespace TestAPI.ViewModels
                 return showSearch ??
                   (showSearch = new Command(obj =>
                   {
-                      CurrentPage = new SearchView();
+                      Navigate("Search");
                   }));
+            }
+        }
+
+        public void Navigate(string param = "", CoinModel coin = null)
+        {
+            switch(param)
+            {
+                case "Details":
+                    if(coin != null)
+                        CurrentPage = new CoinDetailsView(coin);
+                    break;
+                case "TopCoins":
+                    CurrentPage = new TopCoinsView();
+                    break;
+                case "Search":
+                    CurrentPage = new SearchView();
+                    break;
+                default:
+                    CurrentPage = new TopCoinsView(); 
+                    break;
             }
         }
     }

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestAPI.Models;
+using TestAPI.ViewModels;
 
 namespace TestAPI.Views
 {
@@ -23,6 +25,11 @@ namespace TestAPI.Views
         public CoinDetailsView()
         {
             InitializeComponent();
+        }
+        public CoinDetailsView(CoinModel coin)
+        {
+            InitializeComponent();
+            this.DataContext = new CoinDetailsViewModel(coin);
         }
     }
 }
