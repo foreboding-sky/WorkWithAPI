@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using TestAPI.Models;
 
 namespace TestAPI.Services
@@ -24,14 +25,33 @@ namespace TestAPI.Services
         public async Task<DataModel> GetCoins(int count = 100) 
         {
             //api.coincap.io/v2/assets?limit=20
-            DataModel coin = new DataModel();
+            DataModel coins = new DataModel();
             using (HttpResponseMessage response = await Client.GetAsync("http://api.coincap.io/v2/assets?limit=" + count))
             {
                 if(response.IsSuccessStatusCode)
                 {
-                    coin = await response.Content.ReadAsAsync<DataModel>();
+                    coins = await response.Content.ReadAsAsync<DataModel>();
 
-                    return coin;
+                    return coins;
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            throw new Exception("Http response instance not created");
+        }
+
+        public async Task<DataModel> SearchCoin(string name)
+        {
+            DataModel coins = new DataModel();
+            using (HttpResponseMessage response = await Client.GetAsync("http://api.coincap.io/v2/assets?search=" + name))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    coins = await response.Content.ReadAsAsync<DataModel>();
+
+                    return coins;
                 }
                 else
                 {

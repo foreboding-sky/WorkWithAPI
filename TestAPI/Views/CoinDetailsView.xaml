@@ -10,63 +10,70 @@
 
     <Grid Background="White">
         <StackPanel>
-            <Grid>
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock>Rank</TextBlock>
-                    <TextBlock  Text="{Binding Coin.Rank}"/>
+                    <TextBlock TextAlignment="Center">Rank</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Rank}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock>Name</TextBlock>
-                    <TextBlock  Text="{Binding Coin.Name}"/>
+                    <TextBlock TextAlignment="Center">Name</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Name}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock>Change(24Hr)</TextBlock>
-                    <TextBlock  Text="{Binding Coin.ChangePercent24Hr, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Change(24Hr)</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.ChangePercent24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
-            <Grid>
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock>Price</TextBlock>
-                    <TextBlock  Text="{Binding Coin.PriceUsd, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Price</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.PriceUsd, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock>Market Cap</TextBlock>
-                    <TextBlock  Text="{Binding Coin.MarketCapUsd, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Market Cap</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.MarketCapUsd, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock>Volume(24Hr)</TextBlock>
-                    <TextBlock  Text="{Binding Coin.VolumeUsd24Hr, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Volume(24Hr)</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.VolumeUsd24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
-            <Grid>
+            <Grid Margin="5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock>VWAP(24Hr)</TextBlock>
-                    <TextBlock  Text="{Binding Coin.Vwap24Hr, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">VWAP(24Hr)</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Vwap24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock>Supply</TextBlock>
-                    <TextBlock  Text="{Binding Coin.Supply, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Supply</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Supply, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock>Max Supply</TextBlock>
-                    <TextBlock  Text="{Binding Coin.MaxSupply, StringFormat={}{0:#.##}}"/>
+                    <TextBlock TextAlignment="Center">Max Supply</TextBlock>
+                    <TextBlock TextAlignment="Center" Text="{Binding Coin.MaxSupply, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock>Market URL:
+                <Hyperlink Command="{Binding NavigateToLink}">
+                    <TextBlock Text="{Binding Path=CoinLink}"/>  
+                </Hyperlink>
+                </TextBlock>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>

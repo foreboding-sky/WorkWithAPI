@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestAPI.ViewModels;
 
 namespace TestAPI.Views
 {
@@ -23,6 +24,7 @@ namespace TestAPI.Views
         public SearchView()
         {
             InitializeComponent();
+            this.DataContext = new SearchViewModel();
         }
     }
 }
