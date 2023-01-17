@@ -3,18 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
+        xmlns:adonisControls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
         xmlns:local="clr-namespace:TestAPI"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900">
+    <Window.Style>
+        <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}"/>
+    </Window.Style>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20*"/>
             <ColumnDefinition Width="80*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Button Margin="5,2,5,2" Height="30" Command="{Binding ShowTopCoins}">Top coins</Button>
-            <Button Margin="5,2,5,2" Height="30" Command="{Binding ShowSearch}">Search</Button>
-        </StackPanel>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Vertical">
+                <Button Margin="5,2,5,2" Height="30" Command="{Binding ShowTopCoins}">Top coins</Button>
+                <Button Margin="5,2,5,2" Height="30" Command="{Binding ShowSearch}">Search</Button>
+            </StackPanel>
+            <Button Grid.Row="1"
+                    VerticalAlignment="Bottom"
+                    Margin="5,2,5,2" Height="30" Click="ChangeTheme">Switch color sceme</Button>
+        </Grid>
         <Frame x:Name="MainFrame" Grid.Column="1" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage}"/>
     </Grid>
 </Window>

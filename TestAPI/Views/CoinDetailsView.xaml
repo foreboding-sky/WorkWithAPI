@@ -3,30 +3,41 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:adonisUi="clr-namespace:AdonisUI;assembly=AdonisUI"
       xmlns:local="clr-namespace:TestAPI.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CoinDetailsView">
+    <Page.Resources>
+        <Style x:Key="SmallText" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="LargeText" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="16"/>
+        </Style>
+    </Page.Resources>
 
-    <Grid Background="White">
+    <Grid>
         <StackPanel>
-            <Grid Margin="5">
+            <Grid Margin="5,20,5,5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Rank</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Rank}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Rank</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.Rank}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Name</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Name}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Name</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.Name}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Change(24Hr)</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.ChangePercent24Hr, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Change(24Hr)</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.ChangePercent24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="5">
@@ -36,16 +47,16 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Price</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.PriceUsd, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Price</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.PriceUsd, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Market Cap</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.MarketCapUsd, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Market Cap</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.MarketCapUsd, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Volume(24Hr)</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.VolumeUsd24Hr, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Volume(24Hr)</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.VolumeUsd24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="5">
@@ -55,22 +66,22 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">VWAP(24Hr)</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Vwap24Hr, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">VWAP(24Hr)</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.Vwap24Hr, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Supply</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.Supply, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Supply</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.Supply, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
-                    <TextBlock TextAlignment="Center">Max Supply</TextBlock>
-                    <TextBlock TextAlignment="Center" Text="{Binding Coin.MaxSupply, StringFormat={}{0:0.00}}"/>
+                    <TextBlock Style="{StaticResource SmallText}">Max Supply</TextBlock>
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Coin.MaxSupply, StringFormat={}{0:0.00}}"/>
                 </StackPanel>
             </Grid>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock>Market URL:
+                <TextBlock Style="{StaticResource LargeText}">Market URL:
                 <Hyperlink Command="{Binding NavigateToLink}">
-                    <TextBlock Text="{Binding Path=CoinLink}"/>  
+                    <TextBlock Style="{StaticResource LargeText}" Text="{Binding Path=CoinLink}"/>  
                 </Hyperlink>
                 </TextBlock>
             </StackPanel>

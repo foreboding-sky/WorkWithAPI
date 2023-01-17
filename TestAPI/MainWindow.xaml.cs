@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AdonisUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,17 @@ namespace TestAPI
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool _isDark;
         public MainWindow()
         {
             InitializeComponent();
             this.DataContext = new MainWindowViewModel();
+        }
+        private void ChangeTheme(object sender, RoutedEventArgs e)
+        {
+            ResourceLocator.SetColorScheme(Application.Current.Resources, _isDark ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme);
+
+            _isDark = !_isDark;
         }
     }
 }
